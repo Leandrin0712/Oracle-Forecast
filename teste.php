@@ -10,27 +10,24 @@
        <h1>Oracle Forecast</h1>
 
        <h2>
-             <?php
-             $cidade = $_POST["cidade"];
-                echo $cidade;
-             ?>
-        </h2>
-        <h3>
-
-
             <?php
                 $cidade = $_POST["cidade"];
-        		shell_exec("python3 teste.py {$cidade}");
-        		$condicao = file_get_contents("condicao.txt");
-        		$temperatura = file_get_contents("temperatura.txt");
+                $cidadeFormatada = str_replace("-", " ", $cidade);
+                echo $cidadeFormatada;
+            ?>
+        </h2>
+        <h3>
+            <?php
+                $cidade = $_POST["cidade"];
+                shell_exec("python3 teste.py {$cidade}");
+                $condicao = file_get_contents("condicao.txt");
+                $temperatura = file_get_contents("temperatura.txt");
                 
                 echo "<br>";
-        		echo $condicao;
-        		echo "<br>";
-        		echo $temperatura;
-        	?>
-
-
-            	</h3>
+                echo $condicao;
+                echo "<br>";
+                echo $temperatura;
+            ?>
+        </h3>
 </body>
 </html>
