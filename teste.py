@@ -2,16 +2,14 @@ import requests
 import json
 import sys
 
-tamanho = len(sys.argv) - 1
 
-if tamanho == 1:
-	cidade = sys.argv[1]
-	print(cidade)
-elif tamanho == 2:
-	print(sys.argv[1], sys.argv[2])
+cidade = sys.argv[1]
+cidadeFormatada = cidade.replace('-', ' ')
 
+condicao = tempo['weather'][0]['main']
 
-print(cidade)
+temperatura = float(tempo['main']['temp']) - 273.15
+temperaturaFormatada = round(temperatura, 2)
 
 # Faz a requisição da previsão 
 
@@ -21,9 +19,11 @@ tempo = json.loads(requisicao.text)
 # Gera os arquivos para mostrar no site
 
 sys.stdout = open("condicao.txt", "w")
-print('Condição do tempo:', tempo['weather'][0]['main'])
+
+print('Condição do tempo:', condicao)
 sys.stdout.close()
 
 sys.stdout = open("temperatura.txt", "w")
-print('Temperatura:', float(tempo['main']['temp']) - 273.15)
+
+print('Temperatura:', temperaturaFormatada)
 sys.stdout.close()
