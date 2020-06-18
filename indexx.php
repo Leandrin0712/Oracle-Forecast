@@ -20,7 +20,7 @@
 
             <?php
                 $cidade = $_POST["cidade"];
-        		shell_exec("python3 teste.py {$cidade}");
+        		shell_exec("python3 python.py {$cidade}");
         		$condicao = file_get_contents("condicao.txt");
         		$temperatura = file_get_contents("temperatura.txt");
                 
